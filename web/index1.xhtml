@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+ 
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlTelevisores" header="Televisores">
+            <h:form id="frmTelevisores">
+                <p:panelGrid id="tblTelevisor" columns="2">
+                    <p:outputLabel for="txtCodigo" value="Codigo:"/>
+                    <p:inputText id="txtCodigo" value="#{televisorFormBean.codigo}" required="true"/>
+                    <p:outputLabel for="txtTipo" value="Tipo de Televisor:"/>
+                    <p:inputText id="txtTipo" value="#{televisorFormBean.tipo}" required="true"/>
+                    <p:outputLabel for="txtMarca" value="Marca:"/>
+                    <p:inputText id="txtMarca" value="#{televisorFormBean.marca}" required="true"/>
+                    <p:outputLabel for="txtPrecio" value="Precio:"/>
+                    <p:inputText id="txtPrecio" value="#{televisorFormBean.precio}" required="true"/>
+                    <p:outputLabel for="txtFechIng" value="Fecha de Ingreso:"/>
+                    <p:inputText id="txtFechIng" value="#{televisorFormBean.feching}" required="true"/>
+                    <p:outputLabel for="txtStock" value="Stock:"/>
+                    <p:inputText id="txtStock" value="#{televisorFormBean.stock}" required="true"/>
+                    <p:commandButton id="btnAgregarTele" value="Agregar" 
+                                     actionListener="#{televisorFormBean.agregarTelevisor()}" 
+                                     update="tblMuestraTelevisores"/>
+                </p:panelGrid>
+                <h:panelGrid id="tblMuestraTelevisores" columns="7">
+                    <p:dataTable id="dtlTelevisores" value="#{televisorFormBean.televisores.lista}" var="cadaT" 
+                                 emptyMessage="No hay nada">
+                        <p:column headerText="Codigo">
+                            <p:outputLabel value="#{cadaT.codigo}"/>
+                        </p:column>
+                        <p:column headerText="Tipo">
+                            <p:outputLabel value="#{cadaT.tipo}"/>
+                        </p:column>
+                        <p:column headerText="Marca">
+                            <p:outputLabel value="#{cadaT.marca}"/>
+                        </p:column>
+                        <p:column headerText="Precio">
+                            <p:outputLabel value="#{cadaT.precio}"/>
+                        </p:column>
+                        <p:column headerText="Fecha de Ingreso">
+                            <p:outputLabel value="#{cadaT.feching}"/>
+                        </p:column>
+                        <p:column headerText="Stock">
+                            <p:outputLabel value="#{cadaT.stock}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
